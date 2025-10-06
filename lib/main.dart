@@ -1,12 +1,20 @@
+
 import 'package:bmi/app_colors.dart';
+import 'package:bmi/info_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const BmiApp());
+  runApp(BmiApp());
 }
 
-class BmiApp extends StatelessWidget {
+class BmiApp extends StatefulWidget {
   const BmiApp({super.key});
+
+  @override
+  State<BmiApp> createState() => _BmiAppState();
+}
+
+class _BmiAppState extends State<BmiApp> {
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +32,7 @@ class BmiApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
       ),
-      home: Scaffold(appBar: AppBar(title: Text("BMI Calculator"), centerTitle: true,),),
+      home: InfoScreen(),
     );
   }
 }
