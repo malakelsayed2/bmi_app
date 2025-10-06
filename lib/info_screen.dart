@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bmi/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi/app_colors.dart';
@@ -20,12 +22,13 @@ class _InfoScreenState extends State<InfoScreen> {
 
   double height = 160;
 
-  double weight = 60;
+  double weight = 50;
 
-  int age = 90;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
+    double bmi = 0 ;
     return Scaffold(
       appBar: AppBar(title: Text("BMI Calculator"), centerTitle: true),
       body: Column(
@@ -236,9 +239,10 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
           Spacer(),
           CustomButton(navigator: () {
+            bmi = weight / pow(height / 100, 2);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ResultScreen()),
+              MaterialPageRoute(builder: (context) => ResultScreen(bmi: bmi,)),
             );
           }, label: "CALCULATE")
         ],
